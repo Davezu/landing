@@ -1,13 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Testimonial slider functionality
     const testimonialSlider = document.querySelector('.testimonial-slider');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
 
-    // Scroll amount for testimonials
-    const scrollAmount = 320; // Width of testimonial card + gap
+    const scrollAmount = 320;
 
-    // Event listeners for testimonial navigation
     if (prevBtn && nextBtn && testimonialSlider) {
         prevBtn.addEventListener('click', function() {
             testimonialSlider.scrollBy({
@@ -24,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Mobile navigation toggle (for future implementation)
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
     const navigation = document.querySelector('.navigation');
 
@@ -34,6 +30,22 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileNavToggle.classList.toggle('active');
         });
     }
+
+    // Header scroll behavior
+    const header = document.querySelector('header');
+    const scrollThreshold = 50; // Adjust this value as needed
+
+    function toggleHeaderClass() {
+        if (window.scrollY > scrollThreshold) {
+            header.classList.add('header-scrolled');
+        } else {
+            header.classList.remove('header-scrolled');
+        }
+    }
+
+    // Call on initial load and on scroll
+    window.addEventListener('scroll', toggleHeaderClass);
+    toggleHeaderClass();
 
     // Add animation to elements when they come into view
     const animateOnScroll = function() {

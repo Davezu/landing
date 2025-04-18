@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+    /* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -21,6 +21,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
+    background-color: #ffffff;
 }
 
 .container {
@@ -108,12 +109,11 @@ img {
 /* Header Styles */
 header {
     padding: 8px 0;
-    background-color: var(--white);
+    background-color: #ffffff;
     box-shadow: none;
-    position: static;
-    top: 0;
+    position: sticky;
+    top: 15px;
     z-index: 100;
-    border-bottom: 1px solid #eee;
 }
 
 .header-content {
@@ -123,10 +123,12 @@ header {
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
+    transition: all 0.3s ease;
 }
 
 .logo {
     margin-right: auto;
+    transition: opacity 0.3s ease;
 }
 
 .logo img {
@@ -135,21 +137,34 @@ header {
 
 .navigation {
     margin: 0;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 101;
+    top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navigation ul {
     display: flex;
-    background-color: #ebebeb;
+    background-color: #fafafa   ;
     border-radius: 30px;
-    border: none;
+    border: 1px solid #e1e1e1;
     overflow: hidden;
     padding: 0;
     box-shadow: none;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
 }
 
 .navigation li {
     display: flex;
     position: relative;
+    height: 100%;
+    align-items: center;
 }
 
 .navigation li:not(:last-child)::after {
@@ -166,6 +181,7 @@ header {
     padding: 7px 20px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     font-weight: normal;
     font-size: 0.85rem;
@@ -173,6 +189,7 @@ header {
     background-color: transparent;
     border: none;
     color: #444;
+    height: 100%;
 }
 
 .navigation a:hover {
@@ -193,6 +210,9 @@ header {
 .navigation a i {
     color: #0d6832;
     font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Half green underline for active state */
@@ -210,7 +230,9 @@ header {
 .user-actions {
     display: flex;
     gap: 18px;
+    margin-top: -10px;
     margin-left: auto;
+    transition: opacity 0.3s ease;
 }
 
 .user-actions .btn {
@@ -219,7 +241,7 @@ header {
     padding: 0;
     font-size: 0.9rem;
     color: #555;
-    font-weight: normal;
+    font-weight: 500;
 }
 
 .user-actions .btn:hover {
@@ -267,7 +289,7 @@ header {
 .hero-text h1 {
     margin-bottom: 20px;
     color: var(--primary-color);
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 .hero-text .highlight {
@@ -292,8 +314,8 @@ header {
     justify-content: flex-start;
     align-items: center;
     position: absolute;
-    right: -350px;
-    top: -150px;
+    right: -370px;
+    top: -130px;
     width: 70%;
     z-index: 1;
 }
@@ -308,6 +330,7 @@ header {
     padding: 0;
     background-color: transparent;
     transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
 }
 
 .accreditations {
@@ -334,16 +357,38 @@ header {
 /* Testimonials Section */
 .testimonials {
     padding: 80px 0;
-    background-color: var(--tertiary-color);
+    background: linear-gradient(to right, #e2c675, #f5e7b8 30%, #f9f3e1 50%, #f5e7b8 70%, #e2c675 100%);
+    position: relative;
+}
+
+.testimonials::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
+}
+
+.testimonials::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
 }
 
 .testimonial-slider {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     overflow-x: auto;
     padding-bottom: 20px;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    padding-right: 20px;
 }
 
 .testimonial-slider::-webkit-scrollbar {
@@ -354,8 +399,10 @@ header {
     background-color: var(--white);
     border-radius: 10px;
     padding: 30px;
-    min-width: 300px;
+    min-width: 280px;
+    max-width: 280px;
     box-shadow: var(--box-shadow);
+    flex-shrink: 0;
 }
 
 .rating {
@@ -458,11 +505,22 @@ header {
     text-align: center;
 }
 
-/* Footer */
+.see-all-container .btn {
+    background-color: #0d6832;
+    color: #fafafa;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+.see-all-container .btn:hover {
+    background-color: #094d24;
+    color: #fafafa;
+}
+
 footer {
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 60px 0 20px;
+    background-color: #6ab04c;
+    color: var(--black);
+    padding: 40px 0 20px;
 }
 
 .footer-content {
@@ -470,11 +528,12 @@ footer {
     flex-wrap: wrap;
     gap: 40px;
     margin-bottom: 40px;
+    color: #1f1f1f;
 }
 
 .footer-logo img {
     height: 60px;
-    background-color: white;
+    background-color: transparent;
     padding: 5px;
     border-radius: 5px;
 }
@@ -488,23 +547,34 @@ footer {
 }
 
 .footer-section {
-    min-width: 200px;
+    min-width: 100px;
+    font-size: 1rem;
 }
 
 .footer-section h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 20px;
+    font-weight: 650;
 }
 
 .footer-section ul {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
+    font-size: 1rem;
+}
+
+.footer-hours {
+    font-size: 0.8rem;
+    color: var(--black);
+}
+.footers {
+    font-weight: 500;
 }
 
 .social-icons {
     display: flex;
-    gap: 15px;
+    gap: 5px;
 }
 
 .social-icons a {
@@ -526,14 +596,14 @@ footer {
 .footer-bottom {
     display: flex;
     justify-content: space-between;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     font-size: 0.9rem;
 }
 
 .footer-bottom a {
-    color: var(--white);
-    text-decoration: underline;
+    color: var(--black);
+    text-decoration: none;
 }
 
 /* Animation Classes */
@@ -541,11 +611,14 @@ footer {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+    color: #095028;
+    
 }
 
 .animate-on-scroll.animated {
     opacity: 1;
     transform: translateY(0);
+    
 }
 
 .fade-in {
@@ -731,4 +804,32 @@ header,
     box-shadow: none !important;
     -webkit-box-shadow: none !important;
     -moz-box-shadow: none !important;
-} 
+}
+
+/* Header scroll behavior */
+.header-scrolled .logo,
+.header-scrolled .user-actions {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    margin: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    position: absolute;
+    pointer-events: none;
+}
+
+.header-scrolled .user-actions .btn {
+    display: none;
+}
+
+/* Make sure there's some padding in the header when scrolled */
+.header-scrolled {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 30px;
+    margin: 0 auto;
+    width: fit-content;
+    background-color: #ffffff;
+}
